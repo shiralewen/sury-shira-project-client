@@ -1,6 +1,9 @@
-import React from 'react';
-import { useForm } from "react-hook-form";
+import React,{useState} from 'react';
+import { doApiMethod, API_URL, TOKEN_NAME } from '../services/apiService';
+import { useNavigate } from 'react-router-dom';
 
+
+import { useForm } from "react-hook-form";
 import {
   MDBBtn,
   MDBContainer,
@@ -15,16 +18,61 @@ import {
 }
 from 'mdb-react-ui-kit';
 export default function Register() {
-    const { register, handleSubmit, formState: { errors }, getValues } = useForm();
+  const nav = useNavigate();
+  
+    // const [successful, setSuccessful] = useState();
+    const { register, getValues, handleSubmit, formState: { errors } } = useForm();
 
-const onSub = (dataBody) => {
     
-    delete dataBody.pass2Ref;
-    console.log(dataBody);
-  }
+    const onSub = async (bodyData) => {
+        delete bodyData.password2;
+        let url = API_URL + "/users/"
+        console.log(bodyData)
+        try {
+            await doApiMethod(url, "POST", bodyData)
+     nav("/loginn")
+        }
+        catch(err) {
+            console.log(err);
+            alert("email already in system try login")
+        }
 
-  // register -> פונקציה שמייצר לנו ריף עם וולדזציה לאינפוט מסויים
-  const nameRef = register("name", { required: true, minLength: 4 });
+
+    }
+
+    const login=async(bodyData)=>{
+      let url2 = API_URL + "/users/login";
+  
+        let resp = await doApiMethod(url2, "POST", bodyData);
+delete bodyData.name;
+
+localStorage.setItem(TOKEN_NAME, resp.data.token);
+        console.log(localStorage[TOKEN_NAME]);
+        let info = await doApiMethod(API_URL + "/users/myInfo", "GET", bodyData); 
+     
+            localStorage.setItem("USER_NAME",JSON.stringify(info.data) );
+      
+       console.log(info.data);
+        console.log(localStorage["USER_NAME"]);
+  
+        console.log(info.data);
+        console.log(info.data.role);
+        if (info.data.role == "admin") {
+          nav("/admin/addEventAdmin");
+        }
+        // לשגר לעמוד של רשימת המשתמשים
+        else {
+          
+          nav("/login/allEvents");
+        }
+        // nav("/allEvents");
+        // console.log(resp.data.token.user_id);
+      
+  
+    }
+
+
+  const nameRef = register("name", { required: true, minLength: 2 });
   const passRef = register("password", { required: true, minLength: 6 });
   const emailRef = register("email", { required: true, pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i })
   const pass2Ref = register("password2", {
@@ -44,12 +92,12 @@ const onSub = (dataBody) => {
           <MDBRow>
             <MDBCol md='10' lg='6' className='order-2 order-lg-1 d-flex flex-column align-items-center'>
 
-              <p classNAme="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
+              <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign up</p>
 
               <div className="d-flex flex-row align-items-center mb-2 mt-2 ">
                 <MDBIcon fas icon="user me-3" size='lg'/>
                 <MDBInput label='Your Name'{...nameRef} id='form1' type='text' className='w-100'/>
-              </div>  {errors.name && <div className='text-danger'> * Enter valid name: min 4 chars 
+              </div>  {errors.name && <div className='text-danger'> * Enter valid name: min 2 chars 
       !!!!</div>}
               
 

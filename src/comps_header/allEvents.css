@@ -1,0 +1,23 @@
+p,h3{
+    color: white;
+}
+.card{
+    border-radius: 10px;
+    
+}
+.row{
+    display: flex;
+    justify-content: space-between;
+    margin-top: 129px;
+    margin:0 auto;
+}
+.cont{
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+}
+.shira{
+    background-color: black;
+    color: white;
+  }

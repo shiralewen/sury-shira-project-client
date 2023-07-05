@@ -1,0 +1,82 @@
+body {
+     font-family: Arial, sans-serif;
+     background-color: #f2f2f2;
+     margin: 0;
+     padding: 0;
+   }
+   
+   
+   
+   h1 {
+     text-align: center;
+     color: #333;
+   }
+   
+   .reminder {
+     margin: 5px;
+     box-sizing: border-box;
+     box-shadow: rgba(0, 0, 0, 0.09) 0px 2px 1px, rgba(0, 0, 0, 0.09) 0px 4px 2px, rgba(0, 0, 0, 0.09) 0px 8px 4px, rgba(0, 0, 0, 0.09) 0px 16px 8px, rgba(0, 0, 0, 0.09) 0px 32px 16px;  text-align: center;
+     background-color: rgb(238, 238, 147);
+     border-radius: 5px;
+     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+     padding: 20px;
+     margin-bottom: 20px;
+     width: calc(33.33% - 20px); /* Adjust the width as needed */
+     min-height: 200px; /* Adjust the height as needed */
+     box-sizing: border-box;
+   }
+   
+   .reminder h2 {
+     color: #333;
+     margin-top: 0;
+   }
+   
+   .reminder p {
+     color: #666;
+   }
+   
+   .reminder .date {
+     color: #999;
+     font-size: 14px;
+     margin-top: 10px;
+   }
+   
+   .reminder .actions {
+     text-align: right;
+     margin-top: auto;
+   }
+   
+   .reminder .actions button {
+     background-color: #007bff;
+     color: #fff;
+     border: none;
+     padding: 10px 20px;
+     border-radius: 5px;
+     cursor: pointer;
+     font-size: 16px;
+     margin-left: 10px;
+   }
+   
+   .reminder .actions button:hover {
+     background-color: #0056b3;
+   }
+   .allcards{
+     display: flex;
+     justify-content:center;
+   align-items: center;
+   max-width: 800px;
+   margin: 0 auto;
+   padding: 20px;
+   display: flex;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   
+     /* margin: 0 auto; */
+   }
+   .reminder .actions button.delete {
+     background-color: #dc3545;
+   }
+   
+   .reminder .actions button.delete:hover {
+     background-color: #c82333;
+   }

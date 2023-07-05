@@ -1,8 +1,8 @@
 import axios from "axios";
 
-export const API_URL = "http://localhost:3003"
+export const API_URL = "http://localhost:3001"
 // export const API_URL = "https://monkeys.co.il"
-export const TOKEN_NAME = "FOODS_TOKEN"
+export const TOKEN_NAME = "USERS_TOKEN"
 
 export const doApiGet = async(_url) => {
   try{

@@ -8,6 +8,7 @@
   font-family: 'Roboto', sans-serif;
 }
 
+
 body {
   background: tomato;
 }
@@ -103,6 +104,17 @@ header {
   transition: 200ms ease-in;
   opacity: 0.8;
   cursor: pointer;
+}
+
+.profile-picture {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #e10065;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
+  line-height: 50px;
 }
 
 @media (max-width: 768px) {

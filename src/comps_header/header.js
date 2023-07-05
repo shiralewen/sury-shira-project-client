@@ -1,40 +1,54 @@
-import './header.css';
+import { useEffect, useState } from "react";
+import { json, useNavigate } from "react-router-dom";
+import Swal from 'sweetalert2'
+import withReactContent from 'sweetalert2-react-content'
+import "./header.css";
+import { TOKEN_NAME } from "../services/apiService";
+// import {Swal} from "sweetalert2";
 
 function Logo() {
   return (
     <div>
       <a href="#">
         <div className="logo-wrap">
-          <div 
-            id="logo" 
-            className='logo' 
-            alt="Brand logo"
-            >
+          <div id="logo" className="logo" alt="Brand logo">
             Meeting
           </div>
         </div>
-      </a> 
+      </a>
     </div>
   );
 }
 
+
+
+
 function Navbar() {
+
+
+  useEffect(() => {
+  
+    
+  },[]);
+
+
+
   return (
     <nav>
       <ul className="navbar">
-        {/* <li><a href="#">Products</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Contact</a></li> */}
-        
-        <button className="btn"><a href="/login">Log In</a></button>
-        <button className="btn"><a href="/register">Sign Up</a></button>
+
+          <div>
+          <button className="btn"><a href="/loginn">התחבר</a></button>
+          <button className="btn"><a href="/register">הרשמה</a></button>
+          </div>
+       
       </ul>
     </nav>
   );
 }
 
 export default function Header() {
+  
   return (
     <header>
       <div className="h-container">
@@ -42,9 +56,9 @@ export default function Header() {
         <Navbar />
       </div>
     </header>
+    
   );
 }
-
 
 // function App() {
 //   return (
